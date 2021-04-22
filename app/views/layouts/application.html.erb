@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kouisine</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% flash.each do |key, value|%>
+      <%= content_tag(:div,value,class:"alert alert-#{key}")%>
+    <% end%>
+<br>
+<br>
+    <% if logged_in? %>
+      <%= link_to "Nouvelle recette", new_recette_path %>
+      <%= link_to "Se Deconnecter", session_path(current_user.id), method: :delete %>
+    <% else %>
+      <%= link_to "S'incrire", new_user_path %>
+      <%= link_to "Se connecter", new_session_path %>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<div class="container">
+  <% if @recette.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@recette.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @recette.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+  </div>
+    <% end %>
+
+      <%= form_with(model:@recette,local: true) do |form| %>
+          <div class="field">
+            <%= form.label:name %><br>
+            <%= form.text_field :name %>
+          </div>
+          <br>
+          <div class="field">
+            <%= form.label:image %><br>
+            <%= form.text_field :recette_img %>
+          </div>
+          <br>
+          <div class="field">
+            <%= form.label:origin %><br>
+            <%= form.text_field :origin %>
+          </div>
+          <br>
+          <div class="field">
+            <%= form.label :categorie %><br>
+            <%= form.text_field :categorie %>
+          </div>
+          <br>
+          <div class="field">
+            <%= form.label :description %><br>
+            <%= form.text_area :description %>
+          </div>
+          <br>
+          <div class="field">
+
+            <%= form.label :ingredients %><br>
+            <small>Exemple: ingredient1:mesure, ingredient2:mesure</small><br>
+            <%= form.text_area :ingredients %>
+          </div>
+          <br>
+          <div class="field">
+            <%= form.label :preparation %><br>
+            <%= form.text_area :preparation %>
+          </div>
+          <br>
+          <div class="field">
+            <%= form.label :video %><br>
+            <%= form.text_field :video %>
+          </div>
+          <br>
+          </div>
+            <%= form.submit :class=>"btn btn-primary"%>
+      <% end %>
+</div>

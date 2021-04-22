@@ -1,0 +1,9 @@
+<h1>KOUISINE</h1>
+        <% @recettes.each do |recette| %>
+            <h4><%= recette.name%></h4>
+            <small>publie par : <%= recette.user.name%></small>
+            <div><img src=<%= recette.recette_img%> alt=""></div>
+            <p><%= recette.categorie%></p>
+            <p><a href=<%= recette.recette_img%>></a></p>
+              <td><%= link_to 'voir la description', recette_path(recette) %>
+        <% end %>

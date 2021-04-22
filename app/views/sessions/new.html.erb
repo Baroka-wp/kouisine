@@ -1,0 +1,13 @@
+<h1>Se connecter</h1>
+<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+<%= f.label :email %>
+<br>
+<%= f.email_field :email %>
+<br>
+<%= f.label :password %>
+<br>
+<%= f.password_field :password %>
+<br>
+<br>
+<%= f.submit "Se connecter" %>
+<% end %>

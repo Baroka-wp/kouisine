@@ -1,0 +1,29 @@
+<h3><%= @recette.name %></h3>
+<h4><%= @recette.origin %></h4>
+<h4><%= @recette.categorie %></h4>
+<br>
+<div class="recette_img">
+  <img src=<%= @recette.recette_img %> alt="">
+</div>
+<div class="">
+  <p><%= @recette.preparation %></p>
+  <p><%= @recette.description %></p>
+  <div class="ingredient">
+    <h3>INGREDIENTS</h3>
+  <% if @recette.ingredients != nil %>
+      <% @tableau_des_ingredients.each do |ingredient| %>
+        <ul>
+          <li><%= ingredient %></li>
+        </ul>
+    <% end %>
+  <% end %>
+  </div>
+  <a href="<%= @recette.video %>">Voir la video youtude</a>
+</div>
+<br>
+<div class="">
+  <% if logged_in? && current_user.id == @recette.user_id%>
+    <%= link_to "modifier la recette", edit_recette_path(@recette) %>
+    <%= link_to "supprimer la recette", recette_path(@recette.id), method: :delete %>
+<% end %>
+</div>
