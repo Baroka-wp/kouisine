@@ -1,29 +1,43 @@
-<h3><%= @recette.name %></h3>
-<h4><%= @recette.origin %></h4>
-<h4><%= @recette.categorie %></h4>
-<br>
-<div class="recette_img">
-  <img src=<%= @recette.recette_img %> alt="">
-</div>
-<div class="">
-  <p><%= @recette.preparation %></p>
-  <p><%= @recette.description %></p>
-  <div class="ingredient">
-    <h3>INGREDIENTS</h3>
-  <% if @recette.ingredients != nil %>
-      <% @tableau_des_ingredients.each do |ingredient| %>
-        <ul>
-          <li><%= ingredient %></li>
-        </ul>
-    <% end %>
-  <% end %>
+<div class="meal">
+  <div class="meal-header recette_img">
+      <div class="random">
+        <span> <%= @recette.categorie%></span>
+      </div>
+        <img src=<%= @recette.recette_img %> alt="">
+        <h4><%= @recette.name %></h4>
+        <div class="separateur"></div>
+        <p class="owner_name"> Publie par :<%= @recette.user.name%></p>
+        <p class="owner_name">
+            <% if logged_in? && current_user.id == @recette.user_id%>
+              <%= link_to "", edit_recette_path(@recette),:class=>"fas fa-feather-alt" %>
+              <%= link_to "", recette_path(@recette.id), method: :delete,:class=>"fas fa-trash" %>
+          <% end %>
+        </p>
   </div>
-  <a href="<%= @recette.video %>">Voir la video youtude</a>
-</div>
-<br>
-<div class="">
-  <% if logged_in? && current_user.id == @recette.user_id%>
-    <%= link_to "modifier la recette", edit_recette_path(@recette) %>
-    <%= link_to "supprimer la recette", recette_path(@recette.id), method: :delete %>
-<% end %>
+    <div class="meal-body mael-details">
+       <div>
+                <div class="colonne1 colonne">
+                    <h2>Ingrédients</h2>
+                    <div class="ingredients">
+                      <% if @recette.ingredients != nil %>
+                        <% @tableau_des_ingredients.each do |ingredient| %>
+                          <p><%= ingredient %></p>
+                        <% end %>
+                      <% end %>
+                    </div>
+                </div>
+                <div class="colonne2 colonne">
+                    <h2><a href="<%= @recette.video %>" target="_blank"><i class="fab fa-youtube"></i></a> Préparation </h2>
+                    <table class="preparation">
+                        <tr><td class="preparation_etape"><%= @recette.description %></td></tr>
+                    </table>
+                </div>
+                <div class="colonne1 colonne">
+                    <h2>Temps de preparation</h2>
+                    <div class="ingredients">
+                       <p><%= @recette.preparation %></p>
+                    </div>
+                </div>
+            </div>
+    </div>
 </div>

@@ -6,6 +6,9 @@ class User < ApplicationRecord
     before_validation { email.downcase! }
     has_secure_password
 
-    #association
+    #association avec recettes
     has_many :recettes
+
+    #association avec favorite
+    has_many :favorites, dependent: :destroy
 end

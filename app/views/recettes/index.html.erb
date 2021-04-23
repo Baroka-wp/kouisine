@@ -1,9 +1,52 @@
-<h1>KOUISINE</h1>
-        <% @recettes.each do |recette| %>
-            <h4><%= recette.name%></h4>
-            <small>publie par : <%= recette.user.name%></small>
-            <div><img src=<%= recette.recette_img%> alt=""></div>
-            <p><%= recette.categorie%></p>
-            <p><a href=<%= recette.recette_img%>></a></p>
-              <td><%= link_to 'voir la description', recette_path(recette) %>
-        <% end %>
+
+<div class="fav-container">
+<% if logged_in?%>
+  <h3>Mes recette favoris</h3>
+    <ul class="fav-meals" id="fav-meals">
+      <% current_user.favorites.each do |favorite| %>
+      <% @favorite = current_user.favorites.find_by(recette_id: favorite.recette.id)%>
+          <li>
+          <a href=<%= recette_path(favorite.recette) %>>
+
+            <img src=<%= favorite.recette.recette_img%> alt=<%= favorite.recette.name%>>
+            <span><%= favorite.recette.name%></span>
+          </a>
+            <%= link_to '', favorite_path(id: @favorite.id), method: :delete, class:" clear fas fa-window-close" %>
+          </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<% @recettes.each do |recette|%>
+  <a href=<%= recette_path(recette) %>>
+      <div class="meal">
+      <div class="meal-header">
+        <div class="random">
+          <span> <%= recette.categorie%></span>
+        </div>
+        <img src=<%= recette.recette_img%> alt="">
+      </div>
+  </a>
+      <div class="meal-body">
+        <h4><%= recette.name%> </h4>
+
+        <div class="">
+          <div class="favorite_recette">
+            <% if logged_in? %>
+              <% unless recette.user_id == current_user.id %>
+                <% @favorite = current_user.favorites.find_by(recette_id: recette.id)%>
+                <% if @favorite.present? %>
+                    <%= link_to '', favorite_path(id: @favorite.id), method: :delete, class:"fas fa-heart fav-btn active" %>
+                    <%= recette.favorites.count %>
+                <% else %>
+                     <%= link_to '', favorites_path(recette_id: recette.id), method: :post , class:"fas fa-heart fav-btn" %>
+                     <%= recette.favorites.count %>
+                <% end %>
+              <% end %>
+          <% end %>
+          </div>
+        </div>
+    </div>
+    </div>
+<% end %>

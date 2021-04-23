@@ -5,6 +5,7 @@ class RecettesController < ApplicationController
   def index
     @recettes = Recette.all
     @user = User.all
+
   end
 
   def new
@@ -24,6 +25,10 @@ class RecettesController < ApplicationController
   end
 
   def show
+    if logged_in?
+      favorite = current_user.favorites.find_by(recette_id: @recette.id)
+    end
+
     if @recette.ingredients != nil
       @str_ingredients = @recette.ingredients
       @tableau_des_ingredients = @str_ingredients.split(',')

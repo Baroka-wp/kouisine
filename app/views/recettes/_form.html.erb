@@ -1,4 +1,4 @@
-<div class="container">
+
   <% if @recette.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -14,49 +14,45 @@
     <% end %>
 
       <%= form_with(model:@recette,local: true) do |form| %>
-          <div class="field">
-            <%= form.label:name %><br>
-            <%= form.text_field :name %>
-          </div>
-          <br>
-          <div class="field">
-            <%= form.label:image %><br>
-            <%= form.text_field :recette_img %>
-          </div>
-          <br>
-          <div class="field">
-            <%= form.label:origin %><br>
-            <%= form.text_field :origin %>
-          </div>
-          <br>
-          <div class="field">
-            <%= form.label :categorie %><br>
-            <%= form.text_field :categorie %>
-          </div>
-          <br>
-          <div class="field">
-            <%= form.label :description %><br>
-            <%= form.text_area :description %>
-          </div>
-          <br>
-          <div class="field">
 
-            <%= form.label :ingredients %><br>
+            <p>Nom de la recette</p>
+            <%= form.text_field :name %>
+
+          <br>
+          <p>Image du resultat de la recette </p>
+          <%= form.text_field :recette_img %>
+
+        <br>
+
+            <p>De quelle pays est la reccette ?</p>
+            <%= form.text_field :origin %>
+
+          <br>
+
+            <p>La categorie</p>
+            <small>Exemple: vegan, vegetarian, desert, petit dejeuner, diner ...</small><br>
+            <%= form.text_field :categorie %>
+
+          <br>
+            <p>Les ingredients</p>
             <small>Exemple: ingredient1:mesure, ingredient2:mesure</small><br>
-            <%= form.text_area :ingredients %>
-          </div>
+            <%= form.text_area :ingredients , class:"ingredient_textarea"%>
+
           <br>
-          <div class="field">
-            <%= form.label :preparation %><br>
-            <%= form.text_area :preparation %>
-          </div>
+          <p>Temps de preparation</p>
+          <%= form.text_field :preparation %>
+
           <br>
-          <div class="field">
-            <%= form.label :video %><br>
+
+            <%= form.label :description %><br>
+            <%= form.text_area :description , class:"description_textarea" %>
+
+          <br>
+
+            <p>Avez vous une video youtube de la preparation?</p>
             <%= form.text_field :video %>
-          </div>
+
           <br>
-          </div>
+          <br>
             <%= form.submit :class=>"btn btn-primary"%>
       <% end %>
-</div>
