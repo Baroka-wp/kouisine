@@ -17,36 +17,45 @@ Kouisine est une application de partage de recette de cuisine entre les utiisate
 https://www.uidesigndaily.com/posts/sketch-website-section-day-1228
 
 * ## Catalogue conceptuel
+
 # App schema
-### Model : Task
-"Task.new(task_name:string task_details:text task_statut:string task_priority:string)"
+### Model : recette
 
 belongs_to:user
-has_many:labels
+has_many:favorites
 
 | Colums | Description |
 | --- | ----------- |
-| task_name | string |
-| task_detail | string |
-| task_statut | string |
-| task_priority | string |
+| name | string |
+| description | string |
+| recette_img | string |
+| origin | string |
+| categorie | string |
+| ingredients | string |
+| video | string |
+| preparation | string |
 
-### Model User
-"User.new(name:string email:string password_digest:string image:text)"
-has_many:tasks
+
+
+### Model : User
+
+has_many:recette
+has_many:favorite
+
 | Colums | Description |
 | --- | ----------- |
 | name | string |
 | email | string |
-| image | text |
+
 | password_digest | string |
 
-### Model label
-"Label.new(label_name:string)"
+### Model favorites
+
 has_many:tasks
 | Colums | Description |
 | --- | ----------- |
-| name | string |
+| user_id | integer |
+| recette_id | integer |
 
 
 https://docs.google.com/spreadsheets/d/1JXuHmEZwnLmIf3_dxLm9HMIyPFHt1mraqfHc7UOj7yE/edit?usp=sharing
