@@ -22,13 +22,15 @@
  }
 
  body{
-    background-color: #fa80724f;
+    background: url(cool-background1.png) center fixed;
+
      display: flex;
      flex-direction: column;
      align-items: center;
      justify-content: center;
      font-family: "Poppins", sans-serif;
      margin: 0;
+     padding: 0;
      min-height: 100vh;
      color: #182956;
  }
@@ -43,9 +45,8 @@ img{
 }
 
  div.container {
-   background-color: white;
+   background-color: #ffffffc7;
    box-shadow: 0 0 10px 2px #3333331A;
-
    overflow: hidden;
    min-width: 70%;
    max-width: 960px;
@@ -54,25 +55,29 @@ img{
  }
  .header .logo{
    display: flex;
+   flex-direction: column;
    align-items: center;
-   justify-content: space-around;
+   justify-content: center;
  }
 
  .header .logo a{
-   font-size: 2rem;
-   font-weight: 900;
+   font-size: 1.5rem;
  }
 
 
- .header .logo svg{
-   border: 2px solid #ffffff;
-   box-shadow: 0 0 10px 2px #3333331A;
+ .header .logo img{
    border-radius: 50%;
    object-fit: cover;
-   height: 70px;
-   width: 70px;
+   height: 250px;
+   width: 250px;
  }
+
+
  .header-menu{
+   background-color: #ffffffc7;
+   min-width: 70%;
+   max-width: 960px;
+   margin-top: 1.5rem;
    position: relative;
    display: flex;
    align-items: center;
@@ -81,7 +86,6 @@ img{
    box-shadow: 0 0 10px 2px #3333331A;
    border-radius: 5px;
    padding: 0.25rem 1rem;
-   width: 50%;
  }
 
  .menu{
@@ -92,18 +96,26 @@ img{
    left: 0px;
  }
 
-  .menu svg{
-   height: 20px;
-   width: 20px;
+  .menu img{
+   height: 30px;
+   width: 30px;
  }
 
+.meal-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
- .meal{
+
+ .meals{
      position: relative;
      border-radius: 5px;
      border: 0.5px solid #3333331A;
      cursor: pointer;
-     margin: 1.5rem;
+     width: 400px;
+     margin: 0.8rem;
      overflow: hidden;
  }
 
@@ -136,11 +148,31 @@ img{
     background-color: transparent;
     font-size: 1.5rem;
     color: black;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
 }
 
+//show
+.meal{
+    position: relative;
+    border-radius: 5px;
+    border: 0.5px solid #3333331A;
+    cursor: pointer;
+    margin: 0.8rem;
+    overflow: hidden;
+}
+
+//favorites
 .fav-container{
-    background-color: salmon;
+    border: 1px solid #3333331A;
+    color: black;
     padding: 0.5rem 1rem;
+}
+.fav-container a{
+    color: black;
 }
 
 .fav-container h3{
@@ -336,27 +368,27 @@ table.preparation tr {
   width: 100%;
   margin: 0;
   padding: 1.5rem;
-  background-color:salmon;
+  background-color:#ffffffc7;
 }
 
 
 .form form input{
   padding: 10px;
-  border: 0.5px solid white;
+  border: 0.5px solid #182956ab;
   background: transparent;
   width: 100%;
 }
 
 .form form textarea{
   padding: 10px;
-  border: 0.5px solid white;
+  border: 0.5px solid #182956ab;
   background: transparent;
   width: 100%;
   min-height: 20vh;
 }
 
 .form form input[type="submit"]:hover{
-  background: #b37d77;
+  background: #182956ab;
 }
 
 
